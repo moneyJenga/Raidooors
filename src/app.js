@@ -17,7 +17,7 @@ function sacraficePage () {
 }
 
 function galleryPage (imageSrc = "images/selectRaidoor.png") {
-    page.innerHTML = '<h2 align = "center">Gallery</h2><div align = "center"><img class = "gallery" id = "gallery" width = 350px height = 350px src = '+imageSrc+'></div><div align = "center"><label class = labs for = "tkId">select by ID (' + currentDisplayed + '):  </label><input class = inputs type = "number" id = "tokenId" name = "tkId"></div> <div align = "center" class = "btn-group" ><button id = "prevPic">Previous</button><button id = "Display">Show</button><button id = "nextPic">Next</button></div>';
+    page.innerHTML = '<h2 align = "center">Gallery</h2><div align = "center"><img class = "gallery" id = "gallery" width = 350px height = 350px src = '+imageSrc+'></div><div align = "center"><label class = labs for = "tkId">select by ID (' + currentDisplayed + '):  </label><input class = inputs type = "number" value = 0 id = "tokenId" name = "tkId"></div> <div align = "center" class = "btn-group" ><button id = "prevPic">Previous</button><button id = "Display">Show</button><button id = "nextPic">Next</button></div>';
     //var displayBal = document.getElementById("displayBal");
     tokenIDinput = document.getElementById("tokenId");
     document.getElementById("Display").addEventListener("click", showNFT);
