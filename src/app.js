@@ -100,7 +100,7 @@ const connectMint = async () =>  {
             if (mintReady) {
                 const options = await {value: ethers.utils.parseEther("0.25")};
                 let tx = await contract.culture(options);
-                displayBal.innerHTML = "Your sacrafice: " + "<a href = 'https://snowtrace.io/tx/" +  tx.hash + "'>" + tx.hash + "</a>";
+                displayBal.innerHTML = "Your sacrafice: " + "<a href = 'https://snowtrace.io/tx/" +  tx.hash + "' target='_blank'>" + tx.hash + "</a>";
                 console.log(tx.hash);
             } else {
                 displayBal.innerHTML = "Odin not ready for sacrafice, come back soon!";
