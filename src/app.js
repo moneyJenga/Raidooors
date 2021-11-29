@@ -129,6 +129,7 @@ const showNFT = async () => {
         metadata = metadata.replace("ipfs://","https://gateway.pinata.cloud/ipfs/");
         metadata = await $.getJSON(metadata);
         metadata.image = metadata.image.replace("ipfs://","https://gateway.pinata.cloud/ipfs/");
+        currentDisplayed = parseInt(value);
         galleryPage(imageSrc = metadata.image);
         displayMetadata(metadata);
         
@@ -197,7 +198,8 @@ function displayMetadata (metadata) {
 
 // App
 SacraficeButton.addEventListener("click",sacraficePage);
-galleryButton.addEventListener("click",function () {galleryPage(imageSrc = "images/selectRaidoor.png")});
+galleryButton.addEventListener("click",function () {galleryPage(imageSrc = "images/selectRaidoor.png");
+                                                    document.getElementById("metadata").innerHTML = ""; });
 accountTokensButton.addEventListener("click", accountTokensPage);
 
 
