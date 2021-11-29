@@ -99,7 +99,7 @@ const connectMint = async () =>  {
             console.log(mintReady);
             if (mintReady) {
                 const options = await {value: ethers.utils.parseEther("0.25")};
-                let tx = await contract.sacrafice(options);
+                let tx = await contract.culture(options);
                 displayBal.innerHTML = "Your sacrafice: " + tx.hash;
                 console.log(tx.hash);
             } else {
