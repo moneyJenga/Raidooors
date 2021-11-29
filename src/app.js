@@ -25,13 +25,13 @@ function galleryPage (imageSrc = "images/selectRaidoor.png") {
     document.getElementById("nextPic").addEventListener("click",nextNFT);
 }
 
-function accountTokensPage () {
-    if (isCorrectNetwork()) {
+async function accountTokensPage () {
+    if (await isCorrectNetwork()) {
         page.innerHTML = '<br><br><div align = "center"><button class = "buttons" id = "displayBal">Your Raidooors</button></div><p align = "center" id = "userTokensList"></p>';
         document.getElementById("displayBal").addEventListener("click",getAccountTokens);
         document.getElementById("metadata").innerHTML = "";
     } else {
-        page.innerHTML = "Connect to Avalanche network!";
+        page.innerHTML = "<p align = 'center'>Connect to Avalanche network!</p>";
         document.getElementById("metadata").innerHTML = "";
     }
 }
