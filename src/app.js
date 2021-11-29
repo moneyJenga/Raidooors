@@ -3,9 +3,8 @@ const SacraficeButton = document.getElementById("sacrafice");
 const galleryButton = document.getElementById("gallery");
 const accountTokensButton = document.getElementById("accountTokens");
 const page = document.getElementById("app");
-const NetworkId = 1;
+const NetworkId = 4;
 var currentDisplayed = 0;
-
 var connected = false;
 
 function sacraficePage () {
