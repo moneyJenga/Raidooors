@@ -3,7 +3,7 @@ const SacraficeButton = document.getElementById("sacrafice");
 const galleryButton = document.getElementById("gallery");
 const accountTokensButton = document.getElementById("accountTokens");
 const page = document.getElementById("app");
-const NetworkId = 4;
+const NetworkId = 1;
 var currentDisplayed = 0;
 var connected = false;
 
@@ -99,7 +99,7 @@ const connectMint = async () =>  {
             console.log(mintReady);
             if (mintReady) {
                 const options = await {value: ethers.utils.parseEther("0.25")};
-                let tx = await contract.culture(options);
+                let tx = await contract.sacrafice(options);
                 displayBal.innerHTML = "Your sacrafice: " + "<a href = 'https://snowtrace.io/tx/" +  tx.hash + "' target='_blank'>" + tx.hash + "</a>";
                 console.log(tx.hash);
             } else {
