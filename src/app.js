@@ -113,7 +113,7 @@ const connectMint = async () =>  {
     }
 }
 
-//tokenIDinput = document.getElementById("tokenId")
+
 const showNFT = async () => {
     const signer = provider.getSigner();
     const contract = await new ethers.Contract(
