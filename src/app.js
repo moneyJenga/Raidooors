@@ -1,5 +1,5 @@
 var provider = new ethers.providers.Web3Provider(window.ethereum);
-const SacraficeButton = document.getElementById("sacrafice");
+const sacrificeButton = document.getElementById("sacrifice");
 const galleryButton = document.getElementById("gallery");
 const accountTokensButton = document.getElementById("accountTokens");
 const page = document.getElementById("app");
@@ -7,7 +7,7 @@ const NetworkId = 1;
 var currentDisplayed = 0;
 var connected = false;
 
-function sacraficePage () {
+function sacrificePage () {
     page.innerHTML = '<p id = "displayBal">Prepare your altar for Odin!</p><div align = "center"><button class = buttons id = "ConnectWallet">Connect</button></div>';
     document.getElementById("metadata").innerHTML = "";
     var displayBal = document.getElementById("displayBal");
@@ -48,7 +48,7 @@ const getAccountTokens = async () => {
     if (userBalance == 0) {
         document.getElementById("userTokensList").innerHTML = "You have made no sarafices, Odin is not pleased!";
     } else {
-        var tokenList = "Odin is pleased with your sacrafices, Your Raidooors are listed below.<br><br>";
+        var tokenList = "Odin is pleased with your sacrifices, Your Raidooors are listed below.<br><br>";
         var counter = 0;
         var userTokens = "";
         for (let i = 0; i <= latestMinted; i ++) {
@@ -81,8 +81,8 @@ const connectMint = async () =>  {
         if (await isCorrectNetwork()) {
             // connect account
             var account = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            displayBal.innerHTML = "Sacraficial altar: " +  account;
-            document.getElementById("ConnectWallet").innerHTML = "Sacrafice!";
+            displayBal.innerHTML = "sacrificial altar: " +  account;
+            document.getElementById("ConnectWallet").innerHTML = "Sacrifice!";
             connected = true;
         } else {
             if (["Please switch to Avalanche-C chain!","<big>I said switch to Avalanche!!</big>"].includes(displayBal.innerHTML)) {
@@ -100,10 +100,10 @@ const connectMint = async () =>  {
             if (mintReady) {
                 const options = await {value: ethers.utils.parseEther("0.25")};
                 let tx = await contract.sacrafice(options);
-                displayBal.innerHTML = "Your sacrafice: " + "<a href = 'https://snowtrace.io/tx/" +  tx.hash + "' target='_blank'>" + tx.hash + "</a>";
+                displayBal.innerHTML = "Your sacrifice: " + "<a href = 'https://snowtrace.io/tx/" +  tx.hash + "' target='_blank'>" + tx.hash + "</a>";
                 console.log(tx.hash);
             } else {
-                displayBal.innerHTML = "Odin not ready for sacrafice, come back soon!";
+                displayBal.innerHTML = "Odin not ready for sacrifice, come back soon!";
             }
         } else {
             displayBal.innerHTML = "Please switch to Avalanche-C chain!";
@@ -196,7 +196,7 @@ function displayMetadata (metadata) {
 }
 
 // App
-SacraficeButton.addEventListener("click",sacraficePage);
+sacrificeButton.addEventListener("click",sacrificePage);
 galleryButton.addEventListener("click",function () {galleryPage(imageSrc = "images/selectRaidoor.png");
                                                     document.getElementById("metadata").innerHTML = ""; });
 accountTokensButton.addEventListener("click", accountTokensPage);
