@@ -197,12 +197,13 @@ const nextNFT = async () => {
 
 function displayMetadata (metadata) {
     var attr = metadata.attributes;
-    var attributes = ""
+    var cur_id = metadata.name.replace("Raidooors","");
+    var attributes = '<a href ="https://snowflake.market/token/' + minter.address + '::' + cur_id + '" target="_blank">Trade Raidooor ' + cur_id + '</a><br>Attributes:<br>';
     for (let i = 0; i < attr.length; i++) {
         at = attr[i]
         attributes = attributes + at.trait_type + ": " + at.value + "<br>"
-    }
-    document.getElementById("metadata").innerHTML = "ID: " + metadata.name.replace("Raidooors","") + "<br>Attributes: <br>" + attributes; 
+    } 
+    document.getElementById("metadata").innerHTML = attributes; 
 }
 
 // App
