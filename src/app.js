@@ -7,11 +7,17 @@ const NetworkId = 1;
 var currentDisplayed = 0;
 var connected = false;
 
-function sacrificePage () {
+async function sacrificePage () {
     if (!connected){
         page.innerHTML = '<p id = "displayBal">Prepare your altar for Odin!</p><div align = "center"><button class = buttons id = "ConnectWallet">Connect</button></div>';
     } else {
-        page.innerHTML = '<p id = "displayBal">Odin awaits!</p><div align = "center"><button class = buttons id = "ConnectWallet">Sacrifice!</button></div>';
+        if (await isCorrectNetwork()){
+            var account = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            page.innerHTML = '<p id = "displayBal">Sacrificial altar:' + account + '</p><div align = "center"><button class = buttons id = "ConnectWallet">Sacrifice!</button></div>';
+        } else {
+            page.innerHTML = '<p id = "displayBal">Switch to Avalanche!</p><div align = "center"><button class = buttons id = "ConnectWallet">Connect</button></div>';
+            connected = false; 
+        }
     }
     document.getElementById("metadata").innerHTML = "";
     var displayBal = document.getElementById("displayBal");
