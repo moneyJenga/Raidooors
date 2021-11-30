@@ -8,7 +8,11 @@ var currentDisplayed = 0;
 var connected = false;
 
 function sacrificePage () {
-    page.innerHTML = '<p id = "displayBal">Prepare your altar for Odin!</p><div align = "center"><button class = buttons id = "ConnectWallet">Connect</button></div>';
+    if (!connected){
+        page.innerHTML = '<p id = "displayBal">Prepare your altar for Odin!</p><div align = "center"><button class = buttons id = "ConnectWallet">Connect</button></div>';
+    } else {
+        page.innerHTML = '<p id = "displayBal">Odin awaits!</p><div align = "center"><button class = buttons id = "ConnectWallet">Sacrifice!</button></div>';
+    }
     document.getElementById("metadata").innerHTML = "";
     var displayBal = document.getElementById("displayBal");
     var button = document.getElementById("ConnectWallet");
