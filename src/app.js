@@ -67,7 +67,7 @@ const getAccountTokens = async () => {
             if (curOwner.toLowerCase() == account.toLowerCase()) {
                 console.log(typeof(curOwner));
                 counter = counter + 1;
-                tokenList = tokenList + "Raidooor ID: " + i + "<br>";
+                tokenList = tokenList + "Raidooor ID: " + i + ' <a href ="https://snowflake.market/token/' + minter.address + '::' + i + '" target="_blank">Sell</a>' + '<br>';
                 if (counter >= userBalance) {break; } 
             }
         }
