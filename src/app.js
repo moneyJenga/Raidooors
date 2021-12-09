@@ -67,7 +67,7 @@ const getAccountTokens = async () => {
             if (curOwner.toLowerCase() == account.toLowerCase()) {
                 console.log(typeof(curOwner));
                 counter = counter + 1;
-                tokenList = tokenList + "Raidooor ID: " + i + ' <a href ="https://snowflake.market/token/' + minter.address + '::' + i + '" target="_blank">Sell</a>' + '<br>';
+                tokenList = tokenList + "Raidooor ID: " + i + ' <a href ="https://exchange.yetiswap.app/#/nft-detail/' + minter.address + '/' + i + '" target="_blank">Sell</a>' + '<br>';
                 if (counter >= userBalance) {break; } 
             }
         }
@@ -108,10 +108,16 @@ const connectMint = async () =>  {
             let mintReady = await contract.activateMint();
             console.log(mintReady);
             if (mintReady) {
-                const options = await {value: ethers.utils.parseEther("0.25")};
-                let tx = await contract.sacrafice(options);
-                displayBal.innerHTML = "Your sacrifice: " + "<a href = 'https://snowtrace.io/tx/" +  tx.hash + "' target='_blank'>" + tx.hash + "</a>";
-                console.log(tx.hash);
+                signerBal = await provider.getBalance(signer._address); signerBal = parseInt(signerBal);
+                signerBal = signerBal/ (1000000000000000000);
+                if (signerBal < 0.26) {
+                    displayBal.innerHTML = "Insufficent balance, need at least 0.26 AVAX!"
+                } else {
+                    const options = await {value: ethers.utils.parseEther("0.25")};
+                    let tx = await contract.sacrafice(options);
+                    displayBal.innerHTML = "Your sacrifice: " + "<a href = 'https://snowtrace.io/tx/" +  tx.hash + "' target='_blank'>" + tx.hash + "</a>";
+                    console.log(tx.hash);
+                }
             } else {
                 displayBal.innerHTML = "Odin not ready for sacrifice, come back soon!";
             }
@@ -198,7 +204,7 @@ const nextNFT = async () => {
 function displayMetadata (metadata) {
     var attr = metadata.attributes;
     var cur_id = metadata.name.replace("Raidooors","");
-    var attributes = '<a href ="https://snowflake.market/token/' + minter.address + '::' + cur_id + '" target="_blank">Trade Raidooor ' + cur_id + '</a><br>Attributes:<br>';
+    var attributes = '<a href ="https://exchange.yetiswap.app/#/nft-detail/' + minter.address + '/' + cur_id + '" target="_blank">Trade Raidooor ' + cur_id + '</a><br>Attributes:<br>';
     for (let i = 0; i < attr.length; i++) {
         at = attr[i]
         attributes = attributes + at.trait_type + ": " + at.value + "<br>"
